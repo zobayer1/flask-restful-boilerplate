@@ -8,7 +8,9 @@ setup_dependencies = [
 ]
 
 install_dependencies = [
-    "importlib-metadata;python_version<'3.8'",
+    "flask-cors",
+    "flask-restful",
+    "python-dotenv",
 ]
 
 try:
