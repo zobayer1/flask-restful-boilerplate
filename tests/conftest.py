@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+import os
+
 import pytest
 
 from myapi.app import create_app
@@ -7,6 +9,7 @@ from myapi.app import create_app
 @pytest.fixture(scope="module")
 def app():
     """A flask app with testing configurations"""
+    os.environ.update({"LOGGING_ROOT": "logs"})
     return create_app("testing")
 
 
