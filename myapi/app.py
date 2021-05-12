@@ -8,7 +8,7 @@ from myapi.extensions.logger import Logger
 from myapi.health import health_blueprint
 
 
-def create_app(instance_name, app_name="flask-tutorial"):
+def create_app(instance_name: str, app_name: str = "flask-tutorial") -> Flask:
     app = Flask(app_name, instance_path=os.path.join(os.getcwd(), "instance"), instance_relative_config=True)
     app.config.from_object("myapi.config")
     app.config.from_pyfile(f"{instance_name}/application.cfg", silent=True)
@@ -17,10 +17,10 @@ def create_app(instance_name, app_name="flask-tutorial"):
     return app
 
 
-def initialize_extensions(app):
+def initialize_extensions(app: Flask):
     CORS(app)
     Logger(app)
 
 
-def initialize_blueprints(app):
+def initialize_blueprints(app: Flask):
     app.register_blueprint(health_blueprint, url_prefix="/myapi/health")
