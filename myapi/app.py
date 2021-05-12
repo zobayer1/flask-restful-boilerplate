@@ -4,7 +4,7 @@ import os
 from flask import Flask
 from flask_cors import CORS
 
-from myapi.extensions import logger
+from myapi.extensions.logger import Logger
 from myapi.health import health_blueprint
 
 
@@ -19,7 +19,7 @@ def create_app(instance_name, app_name="flask-tutorial"):
 
 def initialize_extensions(app):
     CORS(app)
-    logger.init_app(app)
+    Logger(app)
 
 
 def initialize_blueprints(app):

@@ -9,11 +9,12 @@ from yaml.parser import ParserError
 
 
 class Logger(object):
-    def __init__(self, app=None):
+    def __init__(self, app=None, **kwargs):
         self.logger_name = "myapi_logger"
         self.yaml_config = None
         self.app = app
         self._path_matcher = re.compile(r"\${([^}^{]+)}")
+        self._options = kwargs
         if app:
             self.init_app(app)
 
@@ -29,7 +30,7 @@ class Logger(object):
             with open(self.yaml_config, "r") as f:
                 log_cfg = yaml.safe_load(f.read())
                 logging.config.dictConfig(log_cfg)
-        except (FileNotFoundError, PermissionError, ParserError):
+        except (FileNotFoundError, PermissionError, ParserError):  # pragma: no cover
             pass
         app.logger = logging.getLogger(self.logger_name)
 

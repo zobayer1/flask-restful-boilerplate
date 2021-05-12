@@ -4,12 +4,13 @@ import os
 import pytest
 
 from myapi.app import create_app
+from tests.envvars import variables
 
 
 @pytest.fixture(scope="module")
 def app():
     """A flask app with testing configurations"""
-    os.environ.update({"LOGGING_ROOT": "logs"})
+    os.environ.update(variables)
     return create_app("testing")
 
 
