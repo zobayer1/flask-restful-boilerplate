@@ -8,10 +8,10 @@ setup_dependencies = [
 ]
 
 install_dependencies = [
-    "click",
-    "flask-cors",
-    "flask-restful",
+    "Flask-Cors",
+    "Flask-RESTful",
     "python-dotenv",
+    "PyYAML",
 ]
 
 try:
