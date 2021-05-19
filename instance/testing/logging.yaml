@@ -1,0 +1,49 @@
+version: 1
+
+formatters:
+  simple:
+    format: "[%(asctime)s.%(msecs)03d] [pid %(process)d] [%(levelname)s]: %(message)s"
+    datefmt: "%Y-%m-%d %H:%M:%S"
+  extended:
+    format: "[%(asctime)s.%(msecs)03d] [pid %(process)d] [%(levelname)s] - [%(module)s:%(lineno)d]: %(message)s"
+    datefmt: "%Y-%m-%d %H:%M:%S"
+  email:
+    format: "Message Severity: %(levelname)s\r\nModule Locations: %(filename)s %(module)s:%(lineno)d\r\nServer Timestamp: %(asctime)s\r\nMessage:\r\n%(message)s"
+    datefmt: "%Y-%m-%d %H:%M:%S"
+
+handlers:
+  console:
+    class: logging.StreamHandler
+    level: DEBUG
+    formatter: simple
+    stream: ext://sys.stderr
+
+  file_handler:
+    class: logging.FileHandler
+    level: DEBUG
+    filename: ${LOGGING_ROOT}/myapi.log
+    formatter: extended
+
+  mail_handler:
+    class: logging.handlers.SMTPHandler
+    level: CRITICAL
+    formatter: email
+    mailhost: ["smtp.mailtrap.io", 2525]
+    fromaddr: "myapi-no-reply@myapi.com"
+    toaddrs: ["myapi-admin@myapi.com"]
+    subject: "MyAPI Alert"
+    credentials: ["4ede6aef7b1908", "4330ca394c2c40"]
+
+loggers:
+  myapi_logger:
+    handlers:
+      [
+        console,
+        file_handler,
+        mail_handler
+      ]
+
+root:
+  level: NOTSET
+  handlers: [console]
+  propagate: yes

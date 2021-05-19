@@ -10,6 +10,7 @@ setup_dependencies = [
 install_dependencies = [
     "Flask-Cors",
     "Flask-RESTful",
+    "importlib-metadata;python_version<'3.8'",
     "python-dotenv",
     "PyYAML",
 ]

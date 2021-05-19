@@ -1,5 +1,10 @@
 # -*- coding: utf-8 -*-
-from importlib.metadata import version
+import sys
+
+if sys.version_info < (3, 8):  # pragma: no cover
+    from importlib_metadata import version
+else:  # pragma: no cover
+    from importlib.metadata import version
 
 from flask import current_app as app
 from flask_restful import Resource
