@@ -1,6 +1,5 @@
 include .coveragerc
 include .pre-commit-config.yaml
-include .testenv
 include requirements.txt
 include tox.ini
 recursive-include tests *.py

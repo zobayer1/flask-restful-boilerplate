@@ -13,7 +13,7 @@ Application will fail to start if $FLASK_SECRET is not set.
 """
 try:
     SECRET_KEY = os.getenv("FLASK_SECRET").encode("utf-8")
-except AttributeError:
+except AttributeError:  # pragma: no cover
     raise RuntimeError("Environment variable $FLASK_SECRET was not set")
 
 """LOGGING_CONFIG: Path to logging configurations.
