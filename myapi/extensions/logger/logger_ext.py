@@ -9,7 +9,7 @@ import yaml
 from yaml.parser import ParserError
 
 
-class Logger(object):
+class LoggerExt(object):
     def __init__(self, app: Any = None, **kwargs):
         self.logger_name = "myapi_logger"
         self._path_matcher = re.compile(r"\${([^}^{]+)}")

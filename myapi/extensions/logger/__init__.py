@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
-from myapi.extensions.logger.logger import Logger
+from myapi.extensions.logger.logger_ext import LoggerExt
 
 __all__ = [
-    "Logger",
+    "LoggerExt",
 ]
