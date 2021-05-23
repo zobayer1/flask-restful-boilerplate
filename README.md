@@ -29,6 +29,7 @@ Environment Variables:
 | `FLASK_ENV`              | Flask app instance name                |
 | `FLASK_APP`              | Flask app target module                |
 | `FLASK_SECRET`           | Flask app secret key                   |
+| `LOGGING_ROOT`           | Logging directory path                 |
 
 Development
 -----------
