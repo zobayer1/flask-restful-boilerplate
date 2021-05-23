@@ -61,10 +61,10 @@ To start a development server, run:
     export FLASK_ENV=development
     export FLASK_APP=myapi.wsgi:app
     export FLASK_SECRET=bb9ba2817ef62e261d3adaf90c2727bb
+    export LOGGING_ROOT=logs
     flask run -h 0.0.0.0 -p 5000
 
-**Note:** This project utilizes `python-dotenv` library to read environment variables from `.env`, `.flaskenv`, or
-`.testenv` files. You can move all your export commands to such a file to avoid having to type them repeatedly. Be
+**Note:** This project utilizes `python-dotenv` library to read environment variables from `.env`, or, [`.flaskenv`](./.flaskenv) files. You can move all your export commands to such a file to avoid having to type them repeatedly. Be
 careful when running tests using tox, or running application with WSGI tools like gunicorn, as environment variables
 must be set explicitly to work with these environments.
 
