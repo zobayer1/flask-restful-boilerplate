@@ -30,6 +30,7 @@ class LoggerExt(object):
         except (FileNotFoundError, PermissionError, ParserError):  # pragma: no cover
             pass
         app.logger = logging.getLogger(self.logger_name)
+        app.logger.propagate = False
 
     def _path_constructor(self, _: Any, node: Any):
         match = self._path_matcher.match(node.value)
