@@ -10,17 +10,16 @@ from yaml.parser import ParserError
 
 
 class LoggerExt(object):
-    def __init__(self, app: Any = None, **kwargs):
+    def __init__(self, app: Any = None, **kwargs: Any):
         self.logger_name = "myapi_logger"
         self._path_matcher = re.compile(r"\${([^}^{]+)}")
-        self._options = kwargs
         if app:
-            self.init_app(app)
+            self.init_app(app, **kwargs)
 
-    def init_app(self, app: Any):
-        self._create_logger(app)
+    def init_app(self, app: Any, **kwargs: Any):
+        self._create_logger(app, **kwargs)
 
-    def _create_logger(self, app: Any):
+    def _create_logger(self, app: Any, **kwargs: Any):
         yaml.add_implicit_resolver("!path", self._path_matcher, None, yaml.SafeLoader)
         yaml.add_constructor("!path", self._path_constructor, yaml.SafeLoader)
         try:
@@ -30,7 +29,7 @@ class LoggerExt(object):
         except (FileNotFoundError, PermissionError, ParserError):  # pragma: no cover
             pass
         app.logger = logging.getLogger(self.logger_name)
-        app.logger.propagate = False
+        app.logger.propagate = kwargs.get("propagate", False)
 
     def _path_constructor(self, _: Any, node: Any):
         match = self._path_matcher.match(node.value)

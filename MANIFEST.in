@@ -2,5 +2,6 @@ include .coveragerc
 include .pre-commit-config.yaml
 include requirements.txt
 include tox.ini
+include .flaskenv
 recursive-include tests *.py
 recursive-include instance testing/*

@@ -65,11 +65,14 @@ db.sqlite3
 db.sqlite3-journal
 
 # Flask stuff:
-instance/*
-!instance/testing
 .webassets-cache
-.flaskenv
+instance/*
 myapi/version.py
+
+# only for this tutorial
+# you may consider removing them for a production project
+!.flaskenv
+!instance/testing
 
 # Scrapy stuff:
 .scrapy
