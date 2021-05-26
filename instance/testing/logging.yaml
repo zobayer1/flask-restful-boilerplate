@@ -1,5 +1,10 @@
 version: 1
 
+objects:
+  queue:
+    class: queue.Queue
+    maxsize: 10000
+
 formatters:
   simple:
     format: "[%(asctime)s.%(msecs)03d] [pid %(process)d] [%(levelname)s]: %(message)s"
@@ -34,10 +39,17 @@ handlers:
     subject: "MyAPI Alert"
     credentials: ["4ede6aef7b1908", "4330ca394c2c40"]
 
+  queue_handler:
+    class: myapi.utils.logger.QueueListenerHandler
+    handlers:
+      - cfg://handlers.file_handler
+      - cfg://handlers.mail_handler
+    queue: cfg://objects.queue
+
 loggers:
   flask-tutorial:
     level: DEBUG
-    handlers: [console, file_handler, mail_handler]
+    handlers: [console, queue_handler]
     propagate: no
 
 root:

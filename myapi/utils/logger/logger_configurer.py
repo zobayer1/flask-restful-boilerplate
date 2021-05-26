@@ -9,7 +9,7 @@ import yaml
 from yaml.parser import ParserError
 
 
-class LoggerConfigurer(object):
+class LoggerConfigurer(object):  # pragma: no cover
     _path_matcher = re.compile(r"\${([^}^{]+)}")
 
     def __init__(self, config_path: str, instance_path: str, **kwargs: Any):
@@ -19,7 +19,7 @@ class LoggerConfigurer(object):
             with open(os.path.join(instance_path, config_path), "r") as f:
                 log_cfg = yaml.safe_load(f.read())
                 logging.config.dictConfig(log_cfg)
-        except (FileNotFoundError, PermissionError, ParserError):  # pragma: no cover
+        except (FileNotFoundError, PermissionError, ParserError):
             if kwargs.get("silent") is not True:
                 raise RuntimeError(f"Error reading file: {config_path}")
 
