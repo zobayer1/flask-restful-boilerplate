@@ -35,15 +35,11 @@ handlers:
     credentials: ["4ede6aef7b1908", "4330ca394c2c40"]
 
 loggers:
-  myapi_logger:
-    handlers:
-      [
-        console,
-        file_handler,
-        mail_handler
-      ]
+  flask-tutorial:
+    level: DEBUG
+    handlers: [console, file_handler, mail_handler]
+    propagate: no
 
 root:
   level: NOTSET
   handlers: [console]
-  propagate: yes

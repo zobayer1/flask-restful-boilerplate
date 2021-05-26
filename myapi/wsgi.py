@@ -3,4 +3,4 @@ import os
 
 from myapi.app import create_app
 
-app = create_app(os.getenv("FLASK_ENV", "development"))
+app = create_app(instance_name=os.getenv("FLASK_ENV", "development"))
