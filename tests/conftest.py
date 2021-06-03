@@ -11,7 +11,7 @@ from tests.envvars import variables
 def app():
     """A flask app with testing configurations"""
     os.environ.update(variables)
-    return create_app("testing")
+    return create_app(instance_name="testing")
 
 
 @pytest.fixture(scope="module")
