@@ -1,4 +1,10 @@
+# Logger configuration
 version: 1
+
+objects:
+  queue:
+    class: queue.Queue
+    maxsize: 1000
 
 formatters:
   simple:
@@ -21,8 +27,8 @@ handlers:
   file_handler:
     class: logging.FileHandler
     level: DEBUG
-    filename: ${LOGGING_ROOT}/myapi.log
     formatter: extended
+    filename: ${LOGGING_ROOT:.}/myapi.log
 
   mail_handler:
     class: logging.handlers.SMTPHandler
@@ -34,16 +40,19 @@ handlers:
     subject: "MyAPI Alert"
     credentials: ["4ede6aef7b1908", "4330ca394c2c40"]
 
-loggers:
-  myapi_logger:
+  queue_handler:
+    class: logging_.handlers.QueueListenerHandler
+    queue: cfg://objects.queue
     handlers:
-      [
-        console,
-        file_handler,
-        mail_handler
-      ]
+      - cfg://handlers.file_handler
+      - cfg://handlers.mail_handler
+
+loggers:
+  flask_tutorial:
+    level: DEBUG
+    handlers: [console, queue_handler]
+    propagate: no
 
 root:
   level: NOTSET
   handlers: [console]
-  propagate: yes
