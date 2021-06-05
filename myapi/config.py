@@ -21,3 +21,15 @@ except AttributeError:  # pragma: no cover
 Logger extension will read configurations from the specified file.
 """
 LOGGING_CONFIG = os.getenv("LOGGING_CONFIG", f"instance/{ENV}/logging.yaml")
+
+"""APISPEC_SWAGGER_URL: URL for swagger.json file.
+
+Set None to disable serving this resource.
+"""
+APISPEC_SWAGGER_URL = "/myapi/apispec/spec"
+
+"""APISPEC_SWAGGER_UI_URL: URL for swagger-ui.
+
+Set None to disable serving this view.
+"""
+APISPEC_SWAGGER_UI_URL = "/myapi/apispec"
