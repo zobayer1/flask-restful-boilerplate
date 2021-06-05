@@ -29,7 +29,7 @@ def create_app(
     app = Flask(app_name, instance_path=instance_path, instance_relative_config=True)
     app.config.from_object("myapi.config")
     app.config.from_pyfile(f"{instance_name}/application.cfg", silent=True)
-    if app.debug:
+    if app.debug or app.testing:
         initialize_apispec(app)
     initialize_extensions(app)
     initialize_blueprints(app)
