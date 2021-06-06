@@ -13,7 +13,9 @@ from flask import Flask
 from flask_cors import CORS
 from logging_.config import YAMLConfig
 
-from myapi.health import health_blueprint
+from myapi.apis.admin import blueprint as admin_blueprint
+from myapi.apis.apiv1 import blueprint as apiv1_blueprint
+from myapi.apis.public import blueprint as public_blueprint
 
 if sys.version_info < (3, 8):  # pragma: no cover
     # noinspection PyUnresolvedReferences
@@ -45,7 +47,9 @@ def initialize_extensions(app: Flask):
 
 
 def initialize_blueprints(app: Flask):
-    app.register_blueprint(health_blueprint, url_prefix="/myapi/health")
+    app.register_blueprint(admin_blueprint, url_prefix="/myapi/admin")
+    app.register_blueprint(public_blueprint, url_prefix="/myapi/public")
+    app.register_blueprint(apiv1_blueprint, url_prefix="/myapi/v1")
 
 
 def initialize_apispec(app: Flask):
@@ -60,4 +64,3 @@ def initialize_apispec(app: Flask):
         }
     )
     apispec.init_app(app)
-    apispec.spec.components.security_scheme("jwt", {"type": "http", "scheme": "bearer", "bearerFormat": "JWT"})
