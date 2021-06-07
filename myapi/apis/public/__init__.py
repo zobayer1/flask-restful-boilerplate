@@ -13,7 +13,7 @@ api.add_resource(ServerStatus, "/server/status", endpoint="status")
 
 @blueprint.before_app_first_request
 def register_views():
-    apispec.spec.path(view=ServerStatus, endpoint="status")
+    apispec.register(ServerStatus, blueprint="public", endpoint="status")
 
 
 __all__ = ["blueprint"]
