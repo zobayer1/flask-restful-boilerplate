@@ -7,7 +7,7 @@ from flask.cli import FlaskGroup
 from myapi.app import create_app
 
 
-cli = FlaskGroup(create_app=lambda: create_app(instance_name=os.getenv("FLASK_ENV", "development")))
+cli = FlaskGroup(create_app=lambda: create_app("flask_tutorial"))
 
 
 @cli.command()

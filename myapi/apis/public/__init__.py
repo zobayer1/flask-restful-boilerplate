@@ -2,18 +2,11 @@
 from flask import Blueprint
 from flask_restful import Api
 
-from myapi.extensions import apispec
 from myapi.apis.public.server_status import ServerStatus
 
 blueprint = Blueprint("public", __name__)
+
 api = Api(blueprint)
+api.add_resource(ServerStatus, "/server/status")
 
-api.add_resource(ServerStatus, "/server/status", endpoint="status")
-
-
-@blueprint.before_app_first_request
-def register_views():
-    apispec.register(ServerStatus, blueprint="public", endpoint="status")
-
-
-__all__ = ["blueprint"]
+__all__ = ["blueprint", "ServerStatus"]

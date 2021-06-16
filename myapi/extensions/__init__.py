@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
-from flask_apispec.extension import FlaskApiSpec
+from myapi.extensions.apispece_ext import ApiSpecExt
 
-apispec = FlaskApiSpec()
+apispec = ApiSpecExt()
 
 __all__ = ["apispec"]

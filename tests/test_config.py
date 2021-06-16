@@ -1,11 +1,5 @@
 # -*- coding: utf-8 -*-
-import sys
-
-if sys.version_info < (3, 8):
-    # noinspection PyUnresolvedReferences
-    from importlib_metadata import version
-else:
-    from importlib.metadata import version
+from myapi.commons.utils.app_utils import app_version
 
 
 def test_env(app):
@@ -17,4 +11,4 @@ def test_env(app):
 def test_application_version(app):
     """Test fails if importlib metadata could not be loaded from metadata"""
     assert app.name == "flask_tutorial"
-    assert len(version(app.name)) > 0
+    assert len(app_version(app.name)) > 0
