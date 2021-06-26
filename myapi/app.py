@@ -5,10 +5,7 @@ from flask import Flask
 from flask_cors import CORS
 from logging_.config import YAMLConfig
 
-from myapi.apis.admin import blueprint as admin_blueprint
-from myapi.apis.apiv1 import blueprint as apiv1_blueprint
-from myapi.apis.public import blueprint as public_blueprint, ServerStatus
-
+from myapi.apis import admin, apiv1, public
 from myapi.extensions import apispec
 
 
@@ -45,12 +42,12 @@ def _register_extensions(app: Flask):
 
 def _register_blueprints(app: Flask):
     """Initializes blueprints with URL prefixes"""
-    app.register_blueprint(admin_blueprint, url_prefix="/myapi/admin")
-    app.register_blueprint(public_blueprint, url_prefix="/myapi/public")
-    app.register_blueprint(apiv1_blueprint, url_prefix="/myapi/v1")
+    app.register_blueprint(admin.blueprint, url_prefix="/myapi/admin")
+    app.register_blueprint(public.blueprint, url_prefix="/myapi/public")
+    app.register_blueprint(apiv1.blueprint, url_prefix="/myapi/v1")
 
 
 def _register_apispec(app: Flask):
     """Initializes apispec plugin and registers resources for swagger"""
     apispec.init_app(app)
-    apispec.register(ServerStatus, blueprint=public_blueprint)
+    apispec.register(public.ServerStatus, blueprint=public.blueprint)
