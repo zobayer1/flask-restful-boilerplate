@@ -2,9 +2,9 @@
 from flask import Blueprint
 from flask_restful import Api
 
-from myapi.apis.public.server_status import ServerStatus
+from myapi.apis.local.server_status import ServerStatus
 
-blueprint = Blueprint("public", __name__)
+blueprint = Blueprint("local", __name__)
 
 api = Api(blueprint)
 api.add_resource(ServerStatus, "/server/status")
