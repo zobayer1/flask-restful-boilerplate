@@ -10,5 +10,5 @@ def test_env(app):
 
 def test_application_version(app):
     """Test fails if importlib metadata could not be loaded from metadata"""
-    assert app.name == "flask_tutorial"
+    assert app.name == "myapi"
     assert len(app_version(app.name)) > 0

@@ -69,7 +69,7 @@ db.sqlite3-journal
 instance/*
 myapi/version.py
 
-# only for this tutorial
+# only for this template
 # you may consider removing them for a production project
 !.flaskenv
 !instance/testing

@@ -2,12 +2,12 @@
 from setuptools import find_packages, setup
 
 setup(
-    name="flask-tutorial",
-    url="https://github.com/zobayer1/flask-tutorial",
+    name="myapi",
+    url="https://github.com/zobayer1/flask-restful-boilerplate",
     author="Zobayer Hasan",
     author_email="zobayer1@gmail.com",
-    description="RESTful application server development with python flask",
-    keywords="python flask restful api server development",
+    description="A RESTful application server template with Python Flask-RESTful.",
+    keywords="python flask restful api server development template boilerplate",
     license="MIT",
     packages=find_packages(exclude=["docs", "tests"]),
     use_scm_version=True,

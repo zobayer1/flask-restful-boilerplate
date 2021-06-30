@@ -1,5 +1,5 @@
-Flask Tutorial
-==============
+Flask RESTful Boilerplate
+=========================
 A Flask RESTful demo application. The goal of this application is to demonstrate the steps of building a Flask server
 application ground up following the best RESTful API development practices.
 

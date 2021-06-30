@@ -48,7 +48,7 @@ handlers:
       - cfg://handlers.mail_handler
 
 loggers:
-  flask_tutorial:
+  myapi:
     level: DEBUG
     handlers: [console, queue_handler]
     propagate: no
