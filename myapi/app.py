@@ -36,18 +36,18 @@ def _initialize_logging(filename: str, instance_path: str, **kwargs: bool):
 
 
 def _register_extensions(app: Flask):
-    """Initializes extensions with app config"""
+    """Registers extensions with app config"""
     CORS(app)
 
 
 def _register_blueprints(app: Flask):
-    """Initializes blueprints with URL prefixes"""
+    """Registers blueprints with URL prefixes"""
     app.register_blueprint(admin.blueprint, url_prefix="/myapi/admin")
     app.register_blueprint(local.blueprint, url_prefix="/myapi/local")
     app.register_blueprint(apiv1.blueprint, url_prefix="/myapi/v1")
 
 
 def _register_apispec(app: Flask):
-    """Initializes apispec plugin and registers resources for swagger"""
+    """Registers apispec plugin and registers resources for swagger"""
     apispec.init_app(app)
     apispec.register(local.ServerStatus, blueprint=local.blueprint)

@@ -33,3 +33,9 @@ APISPEC_SWAGGER_URL = "/myapi/apispec/spec"
 Set None to disable serving this view.
 """
 APISPEC_SWAGGER_UI_URL = "/myapi/apispec"
+
+"""PROPAGATE_EXCEPTIONS: Flag to bypass FR error handlers for custom exceptions.
+
+Set this to False if you want to use FR error handlers instead.
+"""
+PROPAGATE_EXCEPTIONS = True
